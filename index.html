@@ -600,6 +600,114 @@
     transform: translateY(0);
   }
 
+  /* ===== Team Section ===== */
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .team-card {
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .team-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-1);
+    transform: scaleX(0);
+    transition: transform 0.4s;
+  }
+
+  .team-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 107, 53, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .team-card:hover::after { transform: scaleX(1); }
+
+  .team-avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    margin: 0 auto 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    font-weight: 700;
+  }
+
+  .team-card h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+
+  .team-card .role {
+    font-size: 0.85rem;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+  }
+
+  .team-card p {
+    font-size: 0.88rem;
+    color: rgba(240, 240, 240, 0.6);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .team-socials {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+  }
+
+  .team-socials a {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .team-socials a:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 900px) {
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 600px) {
+    .team-grid { grid-template-columns: 1fr; }
+  }
+
   /* ===== Responsive ===== */
   @media (max-width: 900px) {
     nav { padding: 1rem 2rem; }
@@ -637,6 +745,7 @@
     <li><a href="#skills">技能</a></li>
     <li><a href="#projects">项目</a></li>
     <li><a href="#gallery">作品</a></li>
+    <li><a href="#team">团队</a></li>
     <li><a href="#contact">联系</a></li>
   </ul>
   <button class="menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')">☰</button>
@@ -802,6 +911,77 @@
       <div class="color-bg" style="background:linear-gradient(135deg,#6C5CE7,#A29BFE);height:320px;"></div>
       <div class="gallery-overlay">
         <div><h4>网页动效</h4><p>Web Animation</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Team Section -->
+<section id="team">
+  <div class="section-header fade-up">
+    <span class="section-tag" style="background:rgba(0,212,170,0.15);color:var(--accent);">团队</span>
+    <h2 class="section-title">项目团队成员</h2>
+    <p class="section-desc">一群充满热情的创造者，协作打造每一个精彩项目</p>
+  </div>
+  <div class="team-grid">
+    <div class="team-card fade-up">
+      <div class="team-avatar" style="background:var(--gradient-1);">阿</div>
+      <h3>阿呆</h3>
+      <div class="role">项目负责人 / 全栈开发</div>
+      <p>10年开发经验，擅长架构设计与团队管理，推动项目从0到1</p>
+      <div class="team-socials">
+        <a href="#" title="GitHub">💻</a>
+        <a href="#" title="Email">✉️</a>
+      </div>
+    </div>
+    <div class="team-card fade-up">
+      <div class="team-avatar" style="background:var(--gradient-2);">小</div>
+      <h3>小明</h3>
+      <div class="role">前端开发工程师</div>
+      <p>React/Vue 技术栈专家，追求极致的用户体验与交互细节</p>
+      <div class="team-socials">
+        <a href="#" title="GitHub">💻</a>
+        <a href="#" title="Email">✉️</a>
+      </div>
+    </div>
+    <div class="team-card fade-up">
+      <div class="team-avatar" style="background:var(--gradient-3);">小</div>
+      <h3>小红</h3>
+      <div class="role">UI/UX 设计师</div>
+      <p>视觉设计达人，擅长品牌设计与用户研究，让产品更懂用户</p>
+      <div class="team-socials">
+        <a href="#" title="Dribbble">🎨</a>
+        <a href="#" title="Email">✉️</a>
+      </div>
+    </div>
+    <div class="team-card fade-up">
+      <div class="team-avatar" style="background:linear-gradient(135deg,#6C5CE7,#A29BFE);">小</div>
+      <h3>小李</h3>
+      <div class="role">后端开发工程师</div>
+      <p>分布式系统专家，精通微服务架构与数据库性能优化</p>
+      <div class="team-socials">
+        <a href="#" title="GitHub">💻</a>
+        <a href="#" title="Email">✉️</a>
+      </div>
+    </div>
+    <div class="team-card fade-up">
+      <div class="team-avatar" style="background:linear-gradient(135deg,#E17055,#FDCB6E);">小</div>
+      <h3>小张</h3>
+      <div class="role">移动端开发工程师</div>
+      <p>跨平台开发能手，Flutter & React Native 实战经验丰富</p>
+      <div class="team-socials">
+        <a href="#" title="GitHub">💻</a>
+        <a href="#" title="Email">✉️</a>
+      </div>
+    </div>
+    <div class="team-card fade-up">
+      <div class="team-avatar" style="background:linear-gradient(135deg,#00B894,#55EFC4);">小</div>
+      <h3>小王</h3>
+      <div class="role">产品经理 / 运营</div>
+      <p>用户增长专家，善于数据驱动的产品决策与市场策略规划</p>
+      <div class="team-socials">
+        <a href="#" title="LinkedIn">🔗</a>
+        <a href="#" title="Email">✉️</a>
       </div>
     </div>
   </div>
