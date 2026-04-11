@@ -226,41 +226,41 @@
 
 <div class="projects">
   <div class="project-card">
-    <div class="project-visual" onclick="openPreview('智能电商平台')">
+    <div class="project-visual" onclick="openPreview('智能电商平台', '../docs/web.pdf', 'pdf')">
       <div class="color-bg" style="background:linear-gradient(135deg,#FF6B35,#FF8E53);"></div>
-      <div class="preview-hint">▶ 点击预览</div>
+      <div class="preview-hint">▶ 点击预览文档</div>
     </div>
     <div class="project-detail">
       <h3>智能电商平台</h3>
       <p>全功能电商系统，支持商品管理、购物车、订单跟踪、支付集成。采用微前端架构，支持多商户入驻。</p>
       <div class="project-tags"><span>React</span><span>Node.js</span><span>PostgreSQL</span><span>Redis</span></div>
-      <button class="btn btn-primary" onclick="openPreview('智能电商平台')">在线预览 →</button>
+      <button class="btn btn-primary" onclick="openPreview('智能电商平台', '../docs/web.pdf', 'pdf')">📄 预览文档 →</button>
     </div>
   </div>
 
   <div class="project-card">
-    <div class="project-visual" onclick="openPreview('SaaS管理后台')">
+    <div class="project-visual" onclick="openPreview('SaaS管理后台', '../docs/web.pdf', 'pdf')">
       <div class="color-bg" style="background:linear-gradient(135deg,#7B2D8E,#9B59B6);"></div>
-      <div class="preview-hint">▶ 点击预览</div>
+      <div class="preview-hint">▶ 点击预览文档</div>
     </div>
     <div class="project-detail">
       <h3>SaaS 管理后台</h3>
       <p>企业级 SaaS 管理平台，包含用户权限、数据看板、工作流引擎、多租户架构，支持自定义模块扩展。</p>
       <div class="project-tags"><span>Vue.js</span><span>TypeScript</span><span>GraphQL</span><span>Docker</span></div>
-      <button class="btn btn-primary" onclick="openPreview('SaaS管理后台')">在线预览 →</button>
+      <button class="btn btn-primary" onclick="openPreview('SaaS管理后台', '../docs/web.pdf', 'pdf')">📄 预览文档 →</button>
     </div>
   </div>
 
   <div class="project-card">
-    <div class="project-visual" onclick="openPreview('实时社交应用')">
+    <div class="project-visual" onclick="openPreview('实时社交应用', '../docs/web.pdf', 'pdf')">
       <div class="color-bg" style="background:linear-gradient(135deg,#00D4AA,#00B4D8);"></div>
-      <div class="preview-hint">▶ 点击预览</div>
+      <div class="preview-hint">▶ 点击预览文档</div>
     </div>
     <div class="project-detail">
       <h3>实时社交应用</h3>
       <p>支持即时通讯、动态发布、实时通知的社交平台。WebSocket 实现消息推送，支持音视频通话。</p>
       <div class="project-tags"><span>Next.js</span><span>Socket.io</span><span>WebRTC</span><span>MongoDB</span></div>
-      <button class="btn btn-primary" onclick="openPreview('实时社交应用')">在线预览 →</button>
+      <button class="btn btn-primary" onclick="openPreview('实时社交应用', '../docs/web.pdf', 'pdf')">📄 预览文档 →</button>
     </div>
   </div>
 </div>
@@ -279,18 +279,19 @@
 </footer>
 
 <script>
-function openPreview(name) {
+function openPreview(name, filePath, fileType) {
   const modal = document.getElementById('previewModal');
   const frame = document.getElementById('previewFrame');
-  document.getElementById('modalTitle').textContent = name + ' — 在线预览';
-  // Demo: generate a preview page inside iframe
-  const previewHTML = `<!DOCTYPE html><html><head><style>
-    body{font-family:system-ui;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;background:#1A1A2E;color:#F0F0F0;text-align:center;}
-    h1{font-size:2rem;margin-bottom:0.5rem;}
-    p{color:rgba(240,240,240,0.6);font-size:1rem;}
-    .tag{display:inline-block;padding:0.3rem 1rem;border-radius:50px;background:rgba(255,107,53,0.15);color:#FF6B35;margin-top:1rem;font-size:0.85rem;}
-  </style></head><body><div><h1>${name}</h1><p>这里是项目在线预览区域</p><div class="tag">Demo 预览</div></div></body></html>`;
-  frame.srcdoc = previewHTML;
+  document.getElementById('modalTitle').textContent = name + ' — 文档预览';
+
+  if (fileType === 'pdf') {
+    frame.src = filePath;
+  } else if (fileType === 'word' || fileType === 'docx') {
+    // Word 文档使用微软在线预览服务
+    const fullUrl = window.location.origin + new URL(filePath, window.location.href).pathname;
+    frame.src = 'https://view.officeapps.live.com/op/embed.aspx?src=' + encodeURIComponent(fullUrl);
+  }
+
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
 }

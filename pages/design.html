@@ -226,41 +226,41 @@
 
 <div class="projects">
   <div class="project-card">
-    <div class="project-visual" onclick="openPreview('金融 App 重设计')">
+    <div class="project-visual" onclick="openPreview('金融 App 重设计', '../docs/design.pdf', 'pdf')">
       <div class="color-bg" style="background:linear-gradient(135deg,#2D3436,#636E72);"></div>
-      <div class="preview-hint">▶ 点击预览</div>
+      <div class="preview-hint">▶ 点击预览文档</div>
     </div>
     <div class="project-detail">
       <h3>金融 App 重设计</h3>
       <p>为某银行 App 进行全面 UX 改版，通过用户研究重新梳理信息架构，转化率提升 40%</p>
       <div class="project-tags"><span>Figma</span><span>用户研究</span><span>A/B测试</span><span>Design System</span></div>
-      <button class="btn btn-primary" onclick="openPreview('金融 App 重设计')">在线预览 →</button>
+      <button class="btn btn-primary" onclick="openPreview('金融 App 重设计', '../docs/design.pdf', 'pdf')">📄 预览文档 →</button>
     </div>
   </div>
 
   <div class="project-card">
-    <div class="project-visual" onclick="openPreview('智能家居 Dashboard')">
+    <div class="project-visual" onclick="openPreview('智能家居 Dashboard', '../docs/design.pdf', 'pdf')">
       <div class="color-bg" style="background:linear-gradient(135deg,#6C5CE7,#A29BFE);"></div>
-      <div class="preview-hint">▶ 点击预览</div>
+      <div class="preview-hint">▶ 点击预览文档</div>
     </div>
     <div class="project-detail">
       <h3>智能家居 Dashboard</h3>
       <p>IoT 智能家居控制面板设计，支持设备管理、场景联动、能耗监控，荣获设计大赛金奖</p>
       <div class="project-tags"><span>Sketch</span><span>原型设计</span><span>动效设计</span><span>IoT</span></div>
-      <button class="btn btn-primary" onclick="openPreview('智能家居 Dashboard')">在线预览 →</button>
+      <button class="btn btn-primary" onclick="openPreview('智能家居 Dashboard', '../docs/design.pdf', 'pdf')">📄 预览文档 →</button>
     </div>
   </div>
 
   <div class="project-card">
-    <div class="project-visual" onclick="openPreview('品牌 VI 系统设计')">
+    <div class="project-visual" onclick="openPreview('品牌 VI 系统设计', '../docs/design.pdf', 'pdf')">
       <div class="color-bg" style="background:linear-gradient(135deg,#E17055,#FDCB6E);"></div>
-      <div class="preview-hint">▶ 点击预览</div>
+      <div class="preview-hint">▶ 点击预览文档</div>
     </div>
     <div class="project-detail">
       <h3>品牌 VI 系统设计</h3>
       <p>从零搭建科技品牌视觉识别体系，涵盖 Logo、色彩、字体、应用规范全套设计</p>
       <div class="project-tags"><span>Illustrator</span><span>品牌设计</span><span>VI系统</span><span>包装设计</span></div>
-      <button class="btn btn-primary" onclick="openPreview('品牌 VI 系统设计')">在线预览 →</button>
+      <button class="btn btn-primary" onclick="openPreview('品牌 VI 系统设计', '../docs/design.pdf', 'pdf')">📄 预览文档 →</button>
     </div>
   </div>
 </div>
@@ -279,18 +279,18 @@
 </footer>
 
 <script>
-function openPreview(name) {
+function openPreview(name, filePath, fileType) {
   const modal = document.getElementById('previewModal');
   const frame = document.getElementById('previewFrame');
-  document.getElementById('modalTitle').textContent = name + ' — 在线预览';
-  // Demo: generate a preview page inside iframe
-  const previewHTML = `<!DOCTYPE html><html><head><style>
-    body{font-family:system-ui;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;background:#1A1A2E;color:#F0F0F0;text-align:center;}
-    h1{font-size:2rem;margin-bottom:0.5rem;}
-    p{color:rgba(240,240,240,0.6);font-size:1rem;}
-    .tag{display:inline-block;padding:0.3rem 1rem;border-radius:50px;background:rgba(255,107,53,0.15);color:#FF6B35;margin-top:1rem;font-size:0.85rem;}
-  </style></head><body><div><h1>${name}</h1><p>这里是项目在线预览区域</p><div class="tag">Demo 预览</div></div></body></html>`;
-  frame.srcdoc = previewHTML;
+  document.getElementById('modalTitle').textContent = name + ' — 文档预览';
+
+  if (fileType === 'pdf') {
+    frame.src = filePath;
+  } else if (fileType === 'word' || fileType === 'docx') {
+    const fullUrl = window.location.origin + new URL(filePath, window.location.href).pathname;
+    frame.src = 'https://view.officeapps.live.com/op/embed.aspx?src=' + encodeURIComponent(fullUrl);
+  }
+
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
 }

@@ -226,41 +226,41 @@
 
 <div class="projects">
   <div class="project-card">
-    <div class="project-visual" onclick="openPreview('智能客服系统')">
+    <div class="project-visual" onclick="openPreview('智能客服系统', '../docs/ai.pdf', 'pdf')">
       <div class="color-bg" style="background:linear-gradient(135deg,#7B2D8E,#9B59B6);"></div>
-      <div class="preview-hint">▶ 点击预览</div>
+      <div class="preview-hint">▶ 点击预览文档</div>
     </div>
     <div class="project-detail">
       <h3>智能客服系统</h3>
       <p>基于大语言模型的多轮对话客服系统，支持意图识别、知识库检索、情感分析，大幅降低人工成本</p>
       <div class="project-tags"><span>Python</span><span>FastAPI</span><span>LangChain</span><span>Vector DB</span></div>
-      <button class="btn btn-primary" onclick="openPreview('智能客服系统')">在线预览 →</button>
+      <button class="btn btn-primary" onclick="openPreview('智能客服系统', '../docs/ai.pdf', 'pdf')">📄 预览文档 →</button>
     </div>
   </div>
 
   <div class="project-card">
-    <div class="project-visual" onclick="openPreview('图像识别平台')">
+    <div class="project-visual" onclick="openPreview('图像识别平台', '../docs/ai.pdf', 'pdf')">
       <div class="color-bg" style="background:linear-gradient(135deg,#00D4AA,#00B4D8);"></div>
-      <div class="preview-hint">▶ 点击预览</div>
+      <div class="preview-hint">▶ 点击预览文档</div>
     </div>
     <div class="project-detail">
       <h3>图像识别平台</h3>
       <p>工业级图像识别方案，支持缺陷检测、物体分类、OCR 文字识别，模型可自定义训练部署</p>
       <div class="project-tags"><span>PyTorch</span><span>OpenCV</span><span>ONNX</span><span>TensorRT</span></div>
-      <button class="btn btn-primary" onclick="openPreview('图像识别平台')">在线预览 →</button>
+      <button class="btn btn-primary" onclick="openPreview('图像识别平台', '../docs/ai.pdf', 'pdf')">📄 预览文档 →</button>
     </div>
   </div>
 
   <div class="project-card">
-    <div class="project-visual" onclick="openPreview('AI 内容生成工具')">
+    <div class="project-visual" onclick="openPreview('AI 内容生成工具', '../docs/ai.pdf', 'pdf')">
       <div class="color-bg" style="background:linear-gradient(135deg,#FF6B35,#7B2D8E);"></div>
-      <div class="preview-hint">▶ 点击预览</div>
+      <div class="preview-hint">▶ 点击预览文档</div>
     </div>
     <div class="project-detail">
       <h3>AI 内容生成工具</h3>
       <p>集成多种 AI 模型的内容创作平台，支持文案生成、图片创作、代码辅助，一站式创作工作流</p>
       <div class="project-tags"><span>Python</span><span>Vue.js</span><span>Stable Diffusion</span><span>GPT</span></div>
-      <button class="btn btn-primary" onclick="openPreview('AI 内容生成工具')">在线预览 →</button>
+      <button class="btn btn-primary" onclick="openPreview('AI 内容生成工具', '../docs/ai.pdf', 'pdf')">📄 预览文档 →</button>
     </div>
   </div>
 </div>
@@ -279,18 +279,18 @@
 </footer>
 
 <script>
-function openPreview(name) {
+function openPreview(name, filePath, fileType) {
   const modal = document.getElementById('previewModal');
   const frame = document.getElementById('previewFrame');
-  document.getElementById('modalTitle').textContent = name + ' — 在线预览';
-  // Demo: generate a preview page inside iframe
-  const previewHTML = `<!DOCTYPE html><html><head><style>
-    body{font-family:system-ui;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;background:#1A1A2E;color:#F0F0F0;text-align:center;}
-    h1{font-size:2rem;margin-bottom:0.5rem;}
-    p{color:rgba(240,240,240,0.6);font-size:1rem;}
-    .tag{display:inline-block;padding:0.3rem 1rem;border-radius:50px;background:rgba(255,107,53,0.15);color:#FF6B35;margin-top:1rem;font-size:0.85rem;}
-  </style></head><body><div><h1>${name}</h1><p>这里是项目在线预览区域</p><div class="tag">Demo 预览</div></div></body></html>`;
-  frame.srcdoc = previewHTML;
+  document.getElementById('modalTitle').textContent = name + ' — 文档预览';
+
+  if (fileType === 'pdf') {
+    frame.src = filePath;
+  } else if (fileType === 'word' || fileType === 'docx') {
+    const fullUrl = window.location.origin + new URL(filePath, window.location.href).pathname;
+    frame.src = 'https://view.officeapps.live.com/op/embed.aspx?src=' + encodeURIComponent(fullUrl);
+  }
+
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
 }

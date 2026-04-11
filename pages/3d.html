@@ -226,41 +226,41 @@
 
 <div class="projects">
   <div class="project-card">
-    <div class="project-visual" onclick="openPreview('3D 产品展示')">
+    <div class="project-visual" onclick="openPreview('3D 产品展示', '../docs/3d.pdf', 'pdf')">
       <div class="color-bg" style="background:linear-gradient(135deg,#00B894,#55EFC4);"></div>
-      <div class="preview-hint">▶ 点击预览</div>
+      <div class="preview-hint">▶ 点击预览文档</div>
     </div>
     <div class="project-detail">
       <h3>3D 产品展示</h3>
       <p>高保真 3D 产品模型展示平台，支持 360° 旋转查看、材质切换、爆炸分解图，电商转化率显著提升</p>
       <div class="project-tags"><span>Three.js</span><span>React Three Fiber</span><span>Blender</span><span>glTF</span></div>
-      <button class="btn btn-primary" onclick="openPreview('3D 产品展示')">在线预览 →</button>
+      <button class="btn btn-primary" onclick="openPreview('3D 产品展示', '../docs/3d.pdf', 'pdf')">📄 预览文档 →</button>
     </div>
   </div>
 
   <div class="project-card">
-    <div class="project-visual" onclick="openPreview('虚拟展厅')">
+    <div class="project-visual" onclick="openPreview('虚拟展厅', '../docs/3d.pdf', 'pdf')">
       <div class="color-bg" style="background:linear-gradient(135deg,#7B2D8E,#9B59B6);"></div>
-      <div class="preview-hint">▶ 点击预览</div>
+      <div class="preview-hint">▶ 点击预览文档</div>
     </div>
     <div class="project-detail">
       <h3>虚拟展厅</h3>
       <p>线上虚拟展馆方案，用户可自由漫游浏览，支持多人同时在线、语音导览、作品交互</p>
       <div class="project-tags"><span>WebGL</span><span>Babylon.js</span><span>WebXR</span><span>Socket.io</span></div>
-      <button class="btn btn-primary" onclick="openPreview('虚拟展厅')">在线预览 →</button>
+      <button class="btn btn-primary" onclick="openPreview('虚拟展厅', '../docs/3d.pdf', 'pdf')">📄 预览文档 →</button>
     </div>
   </div>
 
   <div class="project-card">
-    <div class="project-visual" onclick="openPreview('粒子动效引擎')">
+    <div class="project-visual" onclick="openPreview('粒子动效引擎', '../docs/3d.pdf', 'pdf')">
       <div class="color-bg" style="background:linear-gradient(135deg,#FF6B35,#FF8E53);"></div>
-      <div class="preview-hint">▶ 点击预览</div>
+      <div class="preview-hint">▶ 点击预览文档</div>
     </div>
     <div class="project-detail">
       <h3>粒子动效引擎</h3>
       <p>高性能粒子特效系统，支持烟雾、火焰、星空等多种预设效果，GPU 加速渲染百万级粒子</p>
       <div class="project-tags"><span>GSAP</span><span>WebGL Shaders</span><span>Canvas API</span><span>GPU Computing</span></div>
-      <button class="btn btn-primary" onclick="openPreview('粒子动效引擎')">在线预览 →</button>
+      <button class="btn btn-primary" onclick="openPreview('粒子动效引擎', '../docs/3d.pdf', 'pdf')">📄 预览文档 →</button>
     </div>
   </div>
 </div>
@@ -279,18 +279,18 @@
 </footer>
 
 <script>
-function openPreview(name) {
+function openPreview(name, filePath, fileType) {
   const modal = document.getElementById('previewModal');
   const frame = document.getElementById('previewFrame');
-  document.getElementById('modalTitle').textContent = name + ' — 在线预览';
-  // Demo: generate a preview page inside iframe
-  const previewHTML = `<!DOCTYPE html><html><head><style>
-    body{font-family:system-ui;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;background:#1A1A2E;color:#F0F0F0;text-align:center;}
-    h1{font-size:2rem;margin-bottom:0.5rem;}
-    p{color:rgba(240,240,240,0.6);font-size:1rem;}
-    .tag{display:inline-block;padding:0.3rem 1rem;border-radius:50px;background:rgba(255,107,53,0.15);color:#FF6B35;margin-top:1rem;font-size:0.85rem;}
-  </style></head><body><div><h1>${name}</h1><p>这里是项目在线预览区域</p><div class="tag">Demo 预览</div></div></body></html>`;
-  frame.srcdoc = previewHTML;
+  document.getElementById('modalTitle').textContent = name + ' — 文档预览';
+
+  if (fileType === 'pdf') {
+    frame.src = filePath;
+  } else if (fileType === 'word' || fileType === 'docx') {
+    const fullUrl = window.location.origin + new URL(filePath, window.location.href).pathname;
+    frame.src = 'https://view.officeapps.live.com/op/embed.aspx?src=' + encodeURIComponent(fullUrl);
+  }
+
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
 }

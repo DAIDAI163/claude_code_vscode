@@ -226,41 +226,41 @@
 
 <div class="projects">
   <div class="project-card">
-    <div class="project-visual" onclick="openPreview('健康追踪 App')">
+    <div class="project-visual" onclick="openPreview('健康追踪 App', '../docs/mobile.pdf', 'pdf')">
       <div class="color-bg" style="background:linear-gradient(135deg,#FF6B35,#FF8E53);"></div>
-      <div class="preview-hint">▶ 点击预览</div>
+      <div class="preview-hint">▶ 点击预览文档</div>
     </div>
     <div class="project-detail">
       <h3>健康追踪 App</h3>
       <p>全方位健康管理应用，支持运动追踪、饮食记录、睡眠分析，AI 驱动的个性化健康建议</p>
       <div class="project-tags"><span>Flutter</span><span>Dart</span><span>Firebase</span><span>HealthKit</span></div>
-      <button class="btn btn-primary" onclick="openPreview('健康追踪 App')">在线预览 →</button>
+      <button class="btn btn-primary" onclick="openPreview('健康追踪 App', '../docs/mobile.pdf', 'pdf')">📄 预览文档 →</button>
     </div>
   </div>
 
   <div class="project-card">
-    <div class="project-visual" onclick="openPreview('外卖配送平台')">
+    <div class="project-visual" onclick="openPreview('外卖配送平台', '../docs/mobile.pdf', 'pdf')">
       <div class="color-bg" style="background:linear-gradient(135deg,#E17055,#FDCB6E);"></div>
-      <div class="preview-hint">▶ 点击预览</div>
+      <div class="preview-hint">▶ 点击预览文档</div>
     </div>
     <div class="project-detail">
       <h3>外卖配送平台</h3>
       <p>实时定位配送系统，骑手端、商家端、用户端三端联动，智能调度最优路线</p>
       <div class="project-tags"><span>React Native</span><span>Node.js</span><span>MapBox</span><span>WebSocket</span></div>
-      <button class="btn btn-primary" onclick="openPreview('外卖配送平台')">在线预览 →</button>
+      <button class="btn btn-primary" onclick="openPreview('外卖配送平台', '../docs/mobile.pdf', 'pdf')">📄 预览文档 →</button>
     </div>
   </div>
 
   <div class="project-card">
-    <div class="project-visual" onclick="openPreview('直播互动应用')">
+    <div class="project-visual" onclick="openPreview('直播互动应用', '../docs/mobile.pdf', 'pdf')">
       <div class="color-bg" style="background:linear-gradient(135deg,#6C5CE7,#A29BFE);"></div>
-      <div class="preview-hint">▶ 点击预览</div>
+      <div class="preview-hint">▶ 点击预览文档</div>
     </div>
     <div class="project-detail">
       <h3>直播互动应用</h3>
       <p>高清直播平台，支持弹幕互动、虚拟礼物、连麦 PK，流畅的低延迟推流体验</p>
       <div class="project-tags"><span>Swift</span><span>Kotlin</span><span>WebRTC</span><span>RTMP</span></div>
-      <button class="btn btn-primary" onclick="openPreview('直播互动应用')">在线预览 →</button>
+      <button class="btn btn-primary" onclick="openPreview('直播互动应用', '../docs/mobile.pdf', 'pdf')">📄 预览文档 →</button>
     </div>
   </div>
 </div>
@@ -279,18 +279,18 @@
 </footer>
 
 <script>
-function openPreview(name) {
+function openPreview(name, filePath, fileType) {
   const modal = document.getElementById('previewModal');
   const frame = document.getElementById('previewFrame');
-  document.getElementById('modalTitle').textContent = name + ' — 在线预览';
-  // Demo: generate a preview page inside iframe
-  const previewHTML = `<!DOCTYPE html><html><head><style>
-    body{font-family:system-ui;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;background:#1A1A2E;color:#F0F0F0;text-align:center;}
-    h1{font-size:2rem;margin-bottom:0.5rem;}
-    p{color:rgba(240,240,240,0.6);font-size:1rem;}
-    .tag{display:inline-block;padding:0.3rem 1rem;border-radius:50px;background:rgba(255,107,53,0.15);color:#FF6B35;margin-top:1rem;font-size:0.85rem;}
-  </style></head><body><div><h1>${name}</h1><p>这里是项目在线预览区域</p><div class="tag">Demo 预览</div></div></body></html>`;
-  frame.srcdoc = previewHTML;
+  document.getElementById('modalTitle').textContent = name + ' — 文档预览';
+
+  if (fileType === 'pdf') {
+    frame.src = filePath;
+  } else if (fileType === 'word' || fileType === 'docx') {
+    const fullUrl = window.location.origin + new URL(filePath, window.location.href).pathname;
+    frame.src = 'https://view.officeapps.live.com/op/embed.aspx?src=' + encodeURIComponent(fullUrl);
+  }
+
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
 }

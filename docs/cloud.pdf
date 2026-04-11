@@ -1,0 +1,28 @@
+%PDF-1.4
+1 0 obj <</Type /Catalog /Pages 2 0 R>> endobj
+2 0 obj <</Type /Pages /Kids [3 0 R] /Count 1>> endobj
+3 0 obj <</Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources <</Font <</F1 5 0 R>>>>>> endobj
+4 0 obj <</Length 241>>
+stream
+BT
+/F1 24 Tf
+100 750 Td
+(微服务架构方案 - 项目文档) Tj
+/F1 14 Tf
+0 -40 Td
+(Kubernetes | Docker | Istio) Tj
+0 -30 Td
+(这只是示例文档，请替换为真实项目文档) Tj
+0 -30 Td
+(PDF / Word 文档均可在线预览) Tj
+ET
+endstream
+endobj
+5 0 obj <</Type /Font /Subtype /Type1 /BaseFont /Helvetica>> endobj
+xref
+0 6
+0000000000 65535 f 
+trailer <</Size 6 /Root 1 0 R>>
+startxref
+0
+%%EOF

@@ -226,41 +226,41 @@
 
 <div class="projects">
   <div class="project-card">
-    <div class="project-visual" onclick="openPreview('微服务架构方案')">
+    <div class="project-visual" onclick="openPreview('微服务架构方案', '../docs/cloud.pdf', 'pdf')">
       <div class="color-bg" style="background:linear-gradient(135deg,#E17055,#FDCB6E);"></div>
-      <div class="preview-hint">▶ 点击预览</div>
+      <div class="preview-hint">▶ 点击预览文档</div>
     </div>
     <div class="project-detail">
       <h3>微服务架构方案</h3>
       <p>为中型企业设计并实施微服务架构迁移方案，单体应用拆分为 15 个独立服务，部署效率提升 10 倍</p>
       <div class="project-tags"><span>Kubernetes</span><span>Docker</span><span>Istio</span><span>gRPC</span></div>
-      <button class="btn btn-primary" onclick="openPreview('微服务架构方案')">在线预览 →</button>
+      <button class="btn btn-primary" onclick="openPreview('微服务架构方案', '../docs/cloud.pdf', 'pdf')">📄 预览文档 →</button>
     </div>
   </div>
 
   <div class="project-card">
-    <div class="project-visual" onclick="openPreview('自动化部署平台')">
+    <div class="project-visual" onclick="openPreview('自动化部署平台', '../docs/cloud.pdf', 'pdf')">
       <div class="color-bg" style="background:linear-gradient(135deg,#00D4AA,#00B4D8);"></div>
-      <div class="preview-hint">▶ 点击预览</div>
+      <div class="preview-hint">▶ 点击预览文档</div>
     </div>
     <div class="project-detail">
       <h3>自动化部署平台</h3>
       <p>一站式 CI/CD 平台，支持代码检测、自动构建、灰度发布、回滚操作，日均部署 200+ 次</p>
       <div class="project-tags"><span>Jenkins</span><span>ArgoCD</span><span>Terraform</span><span>Prometheus</span></div>
-      <button class="btn btn-primary" onclick="openPreview('自动化部署平台')">在线预览 →</button>
+      <button class="btn btn-primary" onclick="openPreview('自动化部署平台', '../docs/cloud.pdf', 'pdf')">📄 预览文档 →</button>
     </div>
   </div>
 
   <div class="project-card">
-    <div class="project-visual" onclick="openPreview('监控告警系统')">
+    <div class="project-visual" onclick="openPreview('监控告警系统', '../docs/cloud.pdf', 'pdf')">
       <div class="color-bg" style="background:linear-gradient(135deg,#FF6B35,#7B2D8E);"></div>
-      <div class="preview-hint">▶ 点击预览</div>
+      <div class="preview-hint">▶ 点击预览文档</div>
     </div>
     <div class="project-detail">
       <h3>监控告警系统</h3>
       <p>全链路可观测性平台，集成日志、指标、链路追踪，智能告警降噪，MTTR 降低 60%</p>
       <div class="project-tags"><span>Grafana</span><span>ELK</span><span>Jaeger</span><span>PagerDuty</span></div>
-      <button class="btn btn-primary" onclick="openPreview('监控告警系统')">在线预览 →</button>
+      <button class="btn btn-primary" onclick="openPreview('监控告警系统', '../docs/cloud.pdf', 'pdf')">📄 预览文档 →</button>
     </div>
   </div>
 </div>
@@ -279,18 +279,18 @@
 </footer>
 
 <script>
-function openPreview(name) {
+function openPreview(name, filePath, fileType) {
   const modal = document.getElementById('previewModal');
   const frame = document.getElementById('previewFrame');
-  document.getElementById('modalTitle').textContent = name + ' — 在线预览';
-  // Demo: generate a preview page inside iframe
-  const previewHTML = `<!DOCTYPE html><html><head><style>
-    body{font-family:system-ui;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;background:#1A1A2E;color:#F0F0F0;text-align:center;}
-    h1{font-size:2rem;margin-bottom:0.5rem;}
-    p{color:rgba(240,240,240,0.6);font-size:1rem;}
-    .tag{display:inline-block;padding:0.3rem 1rem;border-radius:50px;background:rgba(255,107,53,0.15);color:#FF6B35;margin-top:1rem;font-size:0.85rem;}
-  </style></head><body><div><h1>${name}</h1><p>这里是项目在线预览区域</p><div class="tag">Demo 预览</div></div></body></html>`;
-  frame.srcdoc = previewHTML;
+  document.getElementById('modalTitle').textContent = name + ' — 文档预览';
+
+  if (fileType === 'pdf') {
+    frame.src = filePath;
+  } else if (fileType === 'word' || fileType === 'docx') {
+    const fullUrl = window.location.origin + new URL(filePath, window.location.href).pathname;
+    frame.src = 'https://view.officeapps.live.com/op/embed.aspx?src=' + encodeURIComponent(fullUrl);
+  }
+
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
 }
