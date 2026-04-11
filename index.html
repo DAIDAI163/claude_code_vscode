@@ -564,6 +564,61 @@
 
   .contact-form .btn-primary { align-self: flex-start; }
 
+  .qr-section {
+    max-width: 1200px;
+    margin: 3rem auto 0;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .qr-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 2.5rem;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: all 0.3s;
+  }
+
+  .qr-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255,107,53,0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  }
+
+  .qr-card .qr-img {
+    width: 160px;
+    height: 160px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+
+  .qr-card .qr-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .qr-card .qr-label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+
+  .qr-card .qr-desc {
+    font-size: 0.8rem;
+    color: rgba(240,240,240,0.5);
+  }
+
   /* ===== Footer ===== */
   footer {
     padding: 2rem 5rem;
@@ -1043,6 +1098,86 @@
       <textarea placeholder="想说的内容..." required></textarea>
       <button type="submit" class="btn btn-primary">发送消息 →</button>
     </form>
+  </div>
+  <div class="qr-section fade-up">
+    <div class="qr-card">
+      <div class="qr-img">
+        <svg viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="160" height="160" fill="white"/>
+          <rect x="20" y="20" width="40" height="40" rx="4" fill="#1A1A2E"/>
+          <rect x="100" y="20" width="40" height="40" rx="4" fill="#1A1A2E"/>
+          <rect x="20" y="100" width="40" height="40" rx="4" fill="#1A1A2E"/>
+          <rect x="28" y="28" width="24" height="24" rx="2" fill="white"/>
+          <rect x="108" y="28" width="24" height="24" rx="2" fill="white"/>
+          <rect x="28" y="108" width="24" height="24" rx="2" fill="white"/>
+          <rect x="36" y="36" width="8" height="8" rx="1" fill="#1A1A2E"/>
+          <rect x="116" y="36" width="8" height="8" rx="1" fill="#1A1A2E"/>
+          <rect x="36" y="116" width="8" height="8" rx="1" fill="#1A1A2E"/>
+          <rect x="70" y="20" width="8" height="8" fill="#1A1A2E"/>
+          <rect x="70" y="36" width="8" height="8" fill="#1A1A2E"/>
+          <rect x="78" y="28" width="8" height="8" fill="#1A1A2E"/>
+          <rect x="86" y="20" width="8" height="8" fill="#1A1A2E"/>
+          <rect x="70" y="52" width="8" height="8" fill="#1A1A2E"/>
+          <rect x="86" y="52" width="8" height="8" fill="#1A1A2E"/>
+          <rect x="70" y="70" width="8" height="8" fill="#1A1A2E"/>
+          <rect x="86" y="78" width="8" height="8" fill="#1A1A2E"/>
+          <rect x="20" y="70" width="8" height="8" fill="#1A1A2E"/>
+          <rect x="36" y="78" width="8" height="8" fill="#1A1A2E"/>
+          <rect x="28" y="86" width="8" height="8" fill="#1A1A2E"/>
+          <rect x="100" y="70" width="8" height="8" fill="#1A1A2E"/>
+          <rect x="116" y="78" width="8" height="8" fill="#1A1A2E"/>
+          <rect x="108" y="86" width="8" height="8" fill="#1A1A2E"/>
+          <rect x="132" y="70" width="8" height="8" fill="#1A1A2E"/>
+          <rect x="100" y="100" width="8" height="8" fill="#1A1A2E"/>
+          <rect x="116" y="108" width="8" height="8" fill="#1A1A2E"/>
+          <rect x="132" y="100" width="8" height="8" fill="#1A1A2E"/>
+          <rect x="108" y="132" width="8" height="8" fill="#1A1A2E"/>
+          <rect x="124" y="124" width="8" height="8" fill="#1A1A2E"/>
+          <rect x="132" y="132" width="8" height="8" fill="#1A1A2E"/>
+        </svg>
+      </div>
+      <span class="qr-label">微信</span>
+      <span class="qr-desc">扫码添加微信好友</span>
+    </div>
+    <div class="qr-card">
+      <div class="qr-img">
+        <svg viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="160" height="160" fill="white"/>
+          <rect x="20" y="20" width="40" height="40" rx="4" fill="#1A1A2E"/>
+          <rect x="100" y="20" width="40" height="40" rx="4" fill="#1A1A2E"/>
+          <rect x="20" y="100" width="40" height="40" rx="4" fill="#1A1A2E"/>
+          <rect x="28" y="28" width="24" height="24" rx="2" fill="white"/>
+          <rect x="108" y="28" width="24" height="24" rx="2" fill="white"/>
+          <rect x="28" y="108" width="24" height="24" rx="2" fill="white"/>
+          <rect x="36" y="36" width="8" height="8" rx="1" fill="#1A1A2E"/>
+          <rect x="116" y="36" width="8" height="8" rx="1" fill="#1A1A2E"/>
+          <rect x="36" y="116" width="8" height="8" rx="1" fill="#1A1A2E"/>
+          <rect x="78" y="20" width="8" height="8" fill="#1A1A2E"/>
+          <rect x="70" y="36" width="16" height="8" fill="#1A1A2E"/>
+          <rect x="86" y="28" width="8" height="8" fill="#1A1A2E"/>
+          <rect x="70" y="52" width="8" height="8" fill="#1A1A2E"/>
+          <rect x="86" y="44" width="8" height="8" fill="#1A1A2E"/>
+          <rect x="78" y="70" width="8" height="8" fill="#1A1A2E"/>
+          <rect x="70" y="86" width="8" height="8" fill="#1A1A2E"/>
+          <rect x="86" y="78" width="8" height="8" fill="#1A1A2E"/>
+          <rect x="20" y="78" width="8" height="8" fill="#1A1A2E"/>
+          <rect x="36" y="70" width="8" height="8" fill="#1A1A2E"/>
+          <rect x="52" y="78" width="8" height="8" fill="#1A1A2E"/>
+          <rect x="100" y="78" width="16" height="8" fill="#1A1A2E"/>
+          <rect x="124" y="70" width="8" height="8" fill="#1A1A2E"/>
+          <rect x="108" y="86" width="8" height="8" fill="#1A1A2E"/>
+          <rect x="100" y="100" width="8" height="8" fill="#1A1A2E"/>
+          <rect x="116" y="108" width="16" height="8" fill="#1A1A2E"/>
+          <rect x="132" y="100" width="8" height="8" fill="#1A1A2E"/>
+          <rect x="100" y="124" width="8" height="8" fill="#1A1A2E"/>
+          <rect x="124" y="132" width="8" height="8" fill="#1A1A2E"/>
+          <rect x="132" y="116" width="8" height="8" fill="#1A1A2E"/>
+          <rect x="108" y="140" width="8" height="8" fill="#1A1A2E"/>
+        </svg>
+      </div>
+      <span class="qr-label">公众号</span>
+      <span class="qr-desc">扫码关注公众号</span>
+    </div>
   </div>
 </section>
 
